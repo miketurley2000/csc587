@@ -1,0 +1,36 @@
+---
+title: "Linear and Log-linear Regression Examples"
+author: "Halil Bisgin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+
+
+```{r linear-regression, message=FALSE, warning=FALSE}
+# Load dataset
+data(iris)
+
+# Fit a linear regression model
+lm_model <- lm(Sepal.Length ~ Sepal.Width, data = iris)
+
+# Model summary
+summary(lm_model)
+
+# Predictions for new horsepower values
+new_data <- data.frame(Sepal.Width = c(2, 2.1, 3.2))
+predictions <- predict(lm_model, new_data, interval = "confidence")
+predictions
+
+# Plot data with regression line
+plot(iris$Sepal.Width, iris$Sepal.Length, 
+     pch = 19, col = "blue", 
+     xlab = "Width", ylab = "Length",
+     main = "Linear Regression: Length ~ Width")
+abline(lm_model, col = "red", lwd = 2)
+
+```
+
+
+
+
